@@ -1,5 +1,5 @@
 ALL:
-	cp ssh-tool/* bin
+	cp src/*.py bin
 
 clean:
 	rm -fr bin/*
