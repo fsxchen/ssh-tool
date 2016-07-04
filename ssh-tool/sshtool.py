@@ -47,4 +47,4 @@ if __name__ == '__main__':
 	if len(sys.argv) < 2:
 		print("usage: %s <ipaddress>" % sys.argv[0])
 		sys.exit(-1)
-	sync_public_key(sys.argv[1], 22, "root", "dtlab2016")
+	sync_public_key(sys.argv[1], 22, "username", "password")
