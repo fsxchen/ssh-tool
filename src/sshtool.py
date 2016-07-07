@@ -2,6 +2,8 @@
 #coding:utf-8
 import os
 
+import sys
+import getpass
 from paramiko import SSHClient
 from paramiko import AutoAddPolicy, SSHException
 
@@ -40,11 +42,24 @@ def sync_public_key(host, port=22, username=None, password=None):
 		stdin, stdout, stderr = client.exec_command(remote_cmd)
 		# pirnt stdin
 	else:
-		print("OK!")   
+		print("OK!")
 
-if __name__ == '__main__':
+
+def main():
 	import sys
+	username, ip = None, None
 	if len(sys.argv) < 2:
 		print("usage: %s <ipaddress>" % sys.argv[0])
 		sys.exit(-1)
-	sync_public_key(sys.argv[1], 22, "username", "password")
+	if "@" in sys.argv[1]:
+		username, ip = sys.argv[1].split("@")
+	else:
+		ip = sys.argv[1]
+	if not username:
+		username = raw_input("Input username:")
+	pwd = getpass.getpass("password:")
+	sync_public_key(ip, 22, username, pwd)
+
+
+if __name__ == '__main__':
+	main()
