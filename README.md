@@ -1,7 +1,9 @@
 # ssh-tool
 
-## install
+## 安装
+sudo pip install -r requestments.txt
 sudo pip install ssh-tool
 
-## use
-usage:sshtool.py ipaddress
+## 使用
+sshtool.py ipaddress
+sshtool.py username@ipaddress
